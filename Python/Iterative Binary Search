@@ -1,0 +1,16 @@
+# Iterative: uses a loop and two markers
+def search_iterative(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = low + (high - low) // 2     # middle, overflow-safe
+        if arr[mid] == target:
+            return mid                    # found it
+        if arr[mid] < target:
+            low = mid + 1                 # go right
+        else:
+            high = mid - 1                # go left
+    return -1                             # not found
+
+arr = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+
+print("Iterative found 23 at index:", search_iterative(arr, 23))

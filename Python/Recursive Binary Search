@@ -1,0 +1,14 @@
+# Recursive: the function calls itself on the smaller half
+def search_recursive(arr, low, high, target):
+    if low > high:                        # base case: empty range
+        return -1
+    mid = low + (high - low) // 2
+    if arr[mid] == target:
+        return mid
+    if arr[mid] < target:
+        return search_recursive(arr, mid + 1, high, target)  # right half
+    return search_recursive(arr, low, mid - 1, target)       # left half
+
+arr = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91]
+
+print("Recursive found 23 at index:", search_recursive(arr, 0, len(arr) - 1, 23))
